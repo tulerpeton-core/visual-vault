@@ -1,0 +1,70 @@
+{
+  "name": "visual-vault",
+  "version": "0.5.7",
+  "description": "Private, local-first visual inbox for screenshots and image references",
+  "author": "Visual Vault Contributors",
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "screenshots",
+    "image-library",
+    "windows"
+  ],
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "verify": "node tools/validate-app.mjs",
+    "security:check": "node tools/security-check.mjs",
+    "check": "npm run verify && npm run security:check && node --check electron/main.cjs && node --check electron/preload.cjs",
+    "pack": "npm run verify && electron-builder --dir",
+    "dist": "npm run check && electron-builder --win nsis",
+    "dist:portable": "npm run check && electron-builder --config electron-builder.portable.cjs"
+  },
+  "devDependencies": {
+    "electron": "43.1.0",
+    "electron-builder": "26.15.3",
+    "esbuild": "0.25.12"
+  },
+  "build": {
+    "appId": "com.visualvault.desktop.v5",
+    "productName": "Visual Vault",
+    "electronDist": "node_modules/electron/dist",
+    "asar": true,
+    "compression": "maximum",
+    "directories": {
+      "output": "release-v3-final"
+    },
+    "files": [
+      "app/**/*",
+      "!app/assets/thumbs/**/*",
+      "!app/assets/wallpaper.png",
+      "assets/**/*",
+      "!assets/app-icon.png",
+      "!assets/tray-icon.png",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/system-icon-dark.png",
+      "artifactName": "Visual-Vault-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Visual Vault",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

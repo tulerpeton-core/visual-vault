@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src vault: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; media-src 'none'">
+  <title>Visual Vault reference</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #151421;
+      color: #f7f6ff;
+      font-family: "Segoe UI Variable", "Segoe UI", sans-serif;
+    }
+    body { display: flex; flex-direction: column; }
+    header {
+      height: 36px;
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-inline-start: 12px;
+      background: #252334;
+      -webkit-app-region: drag;
+      user-select: none;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7863ff;
+      box-shadow: 0 0 12px rgba(120, 99, 255, .8);
+    }
+    .title {
+      min-width: 0;
+      flex: 1;
+      overflow: hidden;
+      color: #c7c3d9;
+      font-size: 12px;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    button {
+      width: 44px;
+      height: 36px;
+      border: 0;
+      background: transparent;
+      color: #c7c3d9;
+      cursor: pointer;
+      -webkit-app-region: no-drag;
+    }
+    button:hover { background: #e1483b; color: white; }
+    main {
+      min-height: 0;
+      flex: 1;
+      display: grid;
+      place-items: center;
+      background: #151421;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    :focus-visible { outline: 2px solid #a697ff; outline-offset: -3px; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="dot"></span>
+    <span class="title"></span>
+    <button type="button" aria-label="Close pinned reference">✕</button>
+  </header>
+  <main><img alt=""></main>
+  <script>
+    const query = new URLSearchParams(location.search);
+    const id = query.get('id');
+    const name = query.get('name') || 'Visual Vault reference';
+    document.title = name;
+    document.querySelector('.title').textContent = name;
+    document.querySelector('img').src = `vault://image/${id}`;
+    document.querySelector('img').alt = name;
+    document.querySelector('button').addEventListener('click', () => window.close());
+  </script>
+</body>
+</html>

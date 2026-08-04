@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; media-src 'none'">
+  <title>Visual Vault</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --pulse: rgba(94, 68, 255, .5);
+      --pulse-soft: rgba(94, 68, 255, .2);
+    }
+    :root[data-theme="dark"] {
+      --pulse: rgba(142, 119, 255, .68);
+      --pulse-soft: rgba(120, 99, 255, .28);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+    }
+    body { display: grid; place-items: center; }
+    .splash {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: grid;
+      place-items: center;
+    }
+    .pulse {
+      position: absolute;
+      width: 154px;
+      height: 154px;
+      border: 2px solid var(--pulse);
+      border-radius: 46px;
+      opacity: 0;
+      animation: pulse-out 1800ms cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+    .pulse-2 { animation-delay: 100ms; }
+    .pulse-3 { animation-delay: 200ms; }
+    .glow {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--pulse-soft) 0%, transparent 68%);
+      opacity: 0;
+      transform: scale(.55);
+      animation: glow-out 1800ms 80ms ease-out forwards;
+    }
+    .mark-wrap {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      overflow: hidden;
+      border-radius: 45px;
+      filter: drop-shadow(0 15px 24px rgba(17, 12, 42, .28));
+      opacity: 0;
+      transform: scale(.76);
+      animation: logo-flash 1200ms cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+    .mark {
+      width: 214px;
+      height: 214px;
+      margin: -19px;
+      object-fit: cover;
+      display: block;
+    }
+    @keyframes logo-flash {
+      0% { opacity: 0; transform: scale(.76); filter: brightness(1.75) blur(3px); }
+      34% { opacity: 1; transform: scale(1.08); filter: brightness(1.45) blur(0); }
+      62% { transform: scale(.98); filter: brightness(1.08); }
+      100% { opacity: 1; transform: scale(1); filter: brightness(1); }
+    }
+    @keyframes pulse-out {
+      0% { opacity: 0; transform: scale(.7); }
+      22% { opacity: .72; }
+      100% { opacity: 0; transform: scale(1.72); }
+    }
+    @keyframes glow-out {
+      0% { opacity: 0; transform: scale(.55); }
+      28% { opacity: 1; }
+      100% { opacity: 0; transform: scale(1.65); }
+    }
+    html.exit .splash {
+      transition: opacity 140ms ease-out, transform 140ms ease-out;
+      opacity: 0;
+      transform: scale(.96);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pulse, .glow { display: none; }
+      .mark-wrap { animation: none; opacity: 1; transform: none; }
+      html.exit .splash { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="splash" aria-label="Visual Vault is starting">
+    <div class="pulse pulse-1" aria-hidden="true"></div>
+    <div class="pulse pulse-2" aria-hidden="true"></div>
+    <div class="pulse pulse-3" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="mark-wrap">
+      <img class="mark" alt="" src="./assets/splash-light.png">
+    </div>
+  </div>
+  <script>
+    const theme = new URLSearchParams(location.search).get('theme') === 'dark'
+      ? 'dark'
+      : 'light';
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('.mark').src = theme === 'dark'
+      ? './assets/splash-dark.png'
+      : './assets/splash-light.png';
+  </script>
+</body>
+</html>
