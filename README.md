@@ -1,6 +1,6 @@
 # Visual Vault
 
-Локальный Windows-каталог для скриншотов и визуальных референсов. Изображения, теги и база данных хранятся на компьютере; сетевых запросов приложение не выполняет.
+Локальный каталог для скриншотов и визуальных референсов. Изображения, теги и база данных хранятся на компьютере; сетевых запросов приложение не выполняет.
 
 ![Visual Vault product preview](docs/screenshots/visual-vault-github-cover.png)
 
@@ -16,6 +16,20 @@
 - глобальная горячая клавиша и режим в трее;
 - резервные копии, экспорт настроек и проверка SQLite-базы;
 - installer и portable EXE.
+
+## Обзор интерфейса
+
+| Библиотека | Захват |
+| --- | --- |
+| ![Dark library](docs/screenshots/github-visuals-v3/generated/02-library-dark.png) | ![Capture modes](docs/screenshots/github-visuals-v3/generated/03-capture.png) |
+
+| Светлая и тёмная темы | Рабочий процесс |
+| --- | --- |
+| ![Light and dark themes](docs/screenshots/github-visuals-v3/generated/04-light-dark.png) | ![Capture, save, tag and pin workflow](docs/screenshots/github-visuals-v3/generated/05-workflow.png) |
+
+### Локальное хранение
+
+![Local-first storage](docs/screenshots/github-visuals-v3/generated/06-local-first.png)
 
 ## Системные требования
 
