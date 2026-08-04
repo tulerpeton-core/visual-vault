@@ -2,9 +2,14 @@
 
 A private, local-first visual library for screenshots and image references.
 
+[![Windows build](https://github.com/tulerpeton-core/visual-vault/actions/workflows/windows-build.yml/badge.svg)](https://github.com/tulerpeton-core/visual-vault/actions/workflows/windows-build.yml)
+[![CodeQL](https://github.com/tulerpeton-core/visual-vault/actions/workflows/codeql.yml/badge.svg)](https://github.com/tulerpeton-core/visual-vault/actions/workflows/codeql.yml)
+[![Release](https://img.shields.io/github/v/release/tulerpeton-core/visual-vault?display_name=tag)](https://github.com/tulerpeton-core/visual-vault/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7C5CFC.svg)](LICENSE)
+
 ![Visual Vault product preview](docs/screenshots/visual-vault-github-cover.png)
 
-[Download the latest release](https://github.com/tulerpeton-core/visual-vault/releases/latest) | [View the changelog](CHANGELOG.md) | [Build from source](#build-from-source)
+**[Download Visual Vault](https://github.com/tulerpeton-core/visual-vault/releases/latest)** · [Features](#features) · [Privacy](#data-and-privacy) · [Build](#build-from-source) · [Changelog](CHANGELOG.md)
 
 Visual Vault keeps screenshots, design references, and copied images in one searchable library. Your images, tags, and SQLite database stay on your computer.
 
@@ -87,8 +92,8 @@ npm run dist
 
 Outputs:
 
-- `release-portable/Visual-Vault-Portable-0.5.7.exe`
-- `release-v3-final/Visual-Vault-Setup-0.5.7.exe`
+- `release-portable/Visual-Vault-Portable-0.5.8.exe`
+- `release-v3-final/Visual-Vault-Setup-0.5.8.exe`
 
 ## Project documentation
 

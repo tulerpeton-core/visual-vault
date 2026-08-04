@@ -19,7 +19,7 @@
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url('./fonts/PlusJakartaSans-800.ttf') format('truetype')}
 html,body{margin:0;padding:0}
 *{box-sizing:border-box}
-a{color:#7B6FC7}a:hover{color:#5F53AC}
+a{color:var(--accent)}a:hover{color:var(--accent-fg)}
 button{font-family:inherit}
 input,select{font-family:inherit}
 :focus-visible{outline:2px solid var(--focus-ring,#7B6FC7);outline-offset:2px;border-radius:6px}
@@ -1550,7 +1550,7 @@ class Component extends DCLogic {
       noTagsBadge:'No tags',recentSearchesHeader:'Recent searches',clearAllBtn:'Clear all',
       btnFit:'Fit',zoomOutAria:'Zoom out',zoomInAria:'Zoom in',
       btnCopyShort:'Copy',btnFavShort:'★ Fav',wordSelected:'selected',
-      searchPh:'Search ( / )',importingFmt:'Importing %s images…',lostBadge:'Original missing',locateBtn:'Locate file…',viewerLostBadge:'Original missing — cached preview',undoBtn:'Undo',newTagBtn:'+ New tag',aboutLine:'Visual Vault 0.5.5 · Local-only · No account needed',shotQuick:'Quick capture',shotSave:'Save capture',shotSearch:'Focus search',shotAll:'Select all',shotRange:'Range / add select',mRename:'Rename',aPin:'Pin on top',aUnpin:'Unpin',tPinned:'Pinned on top of other windows',tUnpinned:'Unpinned',ocrBadgeTitle:'Matched text recognized in the image (OCR)',prevImg:'Previous image',nextImg:'Next image',dblFull:'Double-click for fullscreen'},
+      searchPh:'Search ( / )',importingFmt:'Importing %s images…',lostBadge:'Original missing',locateBtn:'Locate file…',viewerLostBadge:'Original missing — cached preview',undoBtn:'Undo',newTagBtn:'+ New tag',aboutLine:'Visual Vault 0.5.8 · Local-only · No account needed',shotQuick:'Quick capture',shotSave:'Save capture',shotSearch:'Focus search',shotAll:'Select all',shotRange:'Range / add select',mRename:'Rename',aPin:'Pin on top',aUnpin:'Unpin',tPinned:'Pinned on top of other windows',tUnpinned:'Unpinned',ocrBadgeTitle:'Matched text recognized in the image (OCR)',prevImg:'Previous image',nextImg:'Next image',dblFull:'Double-click for fullscreen'},
     ru: {inbox:'Входящие',all:'Все изображения',fav:'Избранное',trash:'Корзина',tags:'Теги',library:'Библиотека',filters:'Фильтры',capture:'Захват',add:'Добавить',settings:'Настройки',imgOne:'изображение',imgMany:'изображений',inTrash:'в корзине',trashEmpty:'Пусто',
       langHint:'Язык меняется сразу во всём приложении — меню, даты и сообщения. Определяется из Windows при первом запуске.',
       ob:['Язык и тема','Хранилище','Захват','Проверка'],obStep:'Шаг %s из 4',obSkip:'Пропустить',obBack:'Назад',obNext:'Далее',obDone:'Готово',
@@ -1595,7 +1595,7 @@ class Component extends DCLogic {
       noTagsBadge:'Без тегов',recentSearchesHeader:'Недавние запросы',clearAllBtn:'Очистить всё',
       btnFit:'По размеру',zoomOutAria:'Уменьшить',zoomInAria:'Увеличить',
       btnCopyShort:'Копировать',btnFavShort:'★ Избр.',wordSelected:'выбрано',
-      searchPh:'Поиск ( / )',importingFmt:'Импорт %s изображений…',lostBadge:'Оригинал не найден',locateBtn:'Указать файл…',viewerLostBadge:'Оригинал не найден — кэшированный предпросмотр',undoBtn:'Отменить',newTagBtn:'+ Новый тег',aboutLine:'Visual Vault 0.5.5 · Только локально · Без аккаунта',shotQuick:'Быстрый захват',shotSave:'Сохранить захват',shotSearch:'Фокус на поиск',shotAll:'Выбрать всё',shotRange:'Диапазон / добавить',mRename:'Переименовать',aPin:'Закрепить поверх окон',aUnpin:'Открепить',tPinned:'Закреплено поверх других окон',tUnpinned:'Откреплено',ocrBadgeTitle:'Совпадение по распознанному тексту на изображении (OCR)',prevImg:'Предыдущее изображение',nextImg:'Следующее изображение',dblFull:'Двойной клик — на весь экран'}
+      searchPh:'Поиск ( / )',importingFmt:'Импорт %s изображений…',lostBadge:'Оригинал не найден',locateBtn:'Указать файл…',viewerLostBadge:'Оригинал не найден — кэшированный предпросмотр',undoBtn:'Отменить',newTagBtn:'+ Новый тег',aboutLine:'Visual Vault 0.5.8 · Только локально · Без аккаунта',shotQuick:'Быстрый захват',shotSave:'Сохранить захват',shotSearch:'Фокус на поиск',shotAll:'Выбрать всё',shotRange:'Диапазон / добавить',mRename:'Переименовать',aPin:'Закрепить поверх окон',aUnpin:'Открепить',tPinned:'Закреплено поверх других окон',tUnpinned:'Откреплено',ocrBadgeTitle:'Совпадение по распознанному тексту на изображении (OCR)',prevImg:'Предыдущее изображение',nextImg:'Следующее изображение',dblFull:'Двойной клик — на весь экран'}
   };
 
   renderVals() {

@@ -2,6 +2,21 @@
 
 This project follows Keep a Changelog and Semantic Versioning.
 
+## [0.5.8] - 2026-08-04
+
+### Added
+
+- Automated tests for tag migration and merge behavior.
+- Installer and portable artifacts in Windows CI.
+- Tagged GitHub Release publishing with SHA-256 checksums.
+- CodeQL scanning and monthly Dependabot updates.
+
+### Changed
+
+- Legacy Russian default tags now migrate to English names without losing image links.
+- README navigation, build status, release, and license badges.
+- Vulnerable transitive build dependencies updated.
+
 ## [0.5.7] - 2026-08-03
 
 ### Added
@@ -43,4 +58,3 @@ This project follows Keep a Changelog and Semantic Versioning.
 - Unified the title bar and added theme-aware system icons.
 - Fixed context menu positioning.
 - Added selected-area and window capture modes.
-

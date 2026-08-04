@@ -1,0 +1,11 @@
+UPLOAD THIS ENTIRE FOLDER TO THE REPOSITORY
+
+1. Open the visual-vault repository on GitHub.
+2. Add files > Upload files.
+3. Drag everything from this folder, including:
+   .agents, .github, .memoire, .gitattributes, and .gitignore.
+4. Commit message: Release Visual Vault 0.5.8
+5. Delete the old root file visual-vault-github-cover.png if it still exists.
+
+Do not upload files from GITHUB-RELEASE-0.5.8 into the repository.
+Those files belong only in GitHub Releases.

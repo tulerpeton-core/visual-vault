@@ -21,6 +21,7 @@ const path = require('node:path');
 const zlib = require('node:zlib');
 const { pathToFileURL } = require('node:url');
 const { DatabaseSync } = require('node:sqlite');
+const { migrateLegacyTags } = require('./tag-migration.cjs');
 
 const APP_USER_MODEL_ID = 'com.visualvault.desktop.v5';
 const MAX_IMAGE_BYTES = 200 * 1024 * 1024;
@@ -231,33 +232,6 @@ function addColumnIfMissing(table, column, definition) {
   }
 }
 
-function repairLegacyTagEncoding() {
-  const replacements = new Map([
-    ['ÐœÐµÐ¼', 'Мем'],
-    ['Ð ÐµÑ„ÐµÑ€ÐµÐ½Ñ', 'Референс'],
-    ['Ð Ð°Ð±Ð¾Ñ‚Ð°', 'Работа'],
-    ['Ð‘Ð°Ð³', 'Баг'],
-    ['Ð˜Ð»Ð»ÑŽÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ', 'Иллюстрация'],
-    ['ÐšÐ¾Ð´', 'Код'],
-  ]);
-  const findTag = db.prepare('SELECT id FROM tags WHERE name = ?');
-  for (const [broken, correct] of replacements) {
-    const brokenTag = findTag.get(broken);
-    if (!brokenTag) continue;
-    const correctTag = findTag.get(correct);
-    if (!correctTag) {
-      db.prepare('UPDATE tags SET name = ? WHERE id = ?').run(correct, brokenTag.id);
-      continue;
-    }
-    db.prepare(
-      `INSERT OR IGNORE INTO image_tags (image_id, tag_id)
-       SELECT image_id, ? FROM image_tags WHERE tag_id = ?`,
-    ).run(correctTag.id, brokenTag.id);
-    db.prepare('DELETE FROM image_tags WHERE tag_id = ?').run(brokenTag.id);
-    db.prepare('DELETE FROM tags WHERE id = ?').run(brokenTag.id);
-  }
-}
-
 function setupStorage() {
   vaultRoot =
     process.env.VV_TEST_MODE === '1'
@@ -306,7 +280,7 @@ function setupStorage() {
   addColumnIfMissing('images', 'height', 'INTEGER');
   addColumnIfMissing('images', 'ocr', 'TEXT');
 
-  repairLegacyTagEncoding();
+  migrateLegacyTags(db);
   for (const [key, value] of Object.entries(defaultSettings)) {
     db.prepare('INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)').run(
       key,

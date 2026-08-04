@@ -12,5 +12,4 @@ Do not publish vulnerabilities in regular issues. Use **Security > Advisories > 
 
 Visual Vault is a local-first application without a network API. The renderer is isolated through Electron sandboxing and context isolation. File-system access is limited to the IPC bridge. The default library is stored in `%USERPROFILE%\Pictures\Visual Vault`.
 
-Visual Vault 0.5.7 binaries are not code-signed. Verify SHA-256 checksums from the GitHub Release and download binaries only from the official repository.
-
+Visual Vault 0.5.8 binaries are not code-signed. Verify SHA-256 checksums from the GitHub Release and download binaries only from the official repository.

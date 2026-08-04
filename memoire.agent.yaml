@@ -1,0 +1,47 @@
+schemaVersion: 1
+product:
+  name: Vault For Picture
+  suite: memoire-product-team
+memory:
+  sources:
+    - README.md
+    - docs
+    - specs
+    - .memoire
+harnesses:
+  default: codex
+  enabled:
+    - codex
+    - claude-code
+    - grok-build
+    - hermes
+    - opencode
+skills:
+  - memoire-design-tooling
+recipes:
+  - id: design-audit
+    title: Design Audit
+    prompt: "Audit the UI with Memoire project memory, design tokens, Tailwind/shadcn conventions, accessibility, and product-team handoff notes."
+    commands:
+      - "memi daemon status --json"
+      - "memi diagnose --json"
+  - id: tailwind-cleanup
+    title: Tailwind + shadcn Cleanup
+    prompt: "Find Tailwind drift, duplicated shadcn primitives, token gaps, and unsafe UI edits before coding."
+    commands:
+      - "memi daemon status --json"
+      - "memi shadcn validate"
+      - "memi fix plan --json"
+  - id: product-handoff
+    title: Product Team Handoff
+    prompt: "Create a compact product-team handoff with research evidence, UI decisions, component specs, and follow-up tasks."
+    commands:
+      - "memi daemon status --json"
+      - "memi studio run --action handoff --mode brokered --prompt \"Create a Memoire product-team handoff\""
+  - id: research-vibe-design
+    title: Research Vibe Design
+    prompt: "Turn research and optional simulation output into Atomic Design specs plus Mermaid Jam-ready FigJam source for product design review."
+    commands:
+      - "memi research synthesize"
+      - "memi research design --intent \"Design a research-backed product decision workspace\" --write-specs --mermaid-jam --json"
+      - "memi mermaid-jam export --from research --json"

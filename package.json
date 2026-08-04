@@ -1,6 +1,6 @@
 {
   "name": "visual-vault",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Private, local-first visual inbox for screenshots and image references",
   "author": "Visual Vault Contributors",
   "license": "MIT",
@@ -17,7 +17,8 @@
     "start": "electron .",
     "verify": "node tools/validate-app.mjs",
     "security:check": "node tools/security-check.mjs",
-    "check": "npm run verify && npm run security:check && node --check electron/main.cjs && node --check electron/preload.cjs",
+    "test": "node --test tools/tests/*.test.mjs",
+    "check": "npm run verify && npm run security:check && npm test && node --check electron/main.cjs && node --check electron/preload.cjs",
     "pack": "npm run verify && electron-builder --dir",
     "dist": "npm run check && electron-builder --win nsis",
     "dist:portable": "npm run check && electron-builder --config electron-builder.portable.cjs"
