@@ -1,32 +1,46 @@
 # Changelog
 
-Формат основан на Keep a Changelog. Проект использует Semantic Versioning.
+This project follows Keep a Changelog and Semantic Versioning.
 
-## [0.5.6] — 2026-08-03
+## [0.5.7] - 2026-08-03
 
 ### Added
 
-- проект опубликован под лицензией MIT;
-- локальная security-проверка и GitHub Actions для Windows-сборки;
-- GitHub-документация, шаблоны задач и релизный чек-лист;
-- QA-запуск интерфейса на минимальном размере 760×560.
+- Six polished sample images for every new empty library.
+- English sample tags: Reference, UI, Work, Illustration, Mood, and Inspiration.
+- First-run initialization that never restores samples after the user removes them.
 
 ### Changed
 
-- Electron renderer переведён в sandbox;
-- новые окна, renderer-навигация и разрешения запрещены по умолчанию;
-- импорт изображений, backup, настройки, теги и IPC-параметры валидируются;
-- неиспользуемые demo-ассеты исключены из релиза.
+- GitHub README rebuilt as an English product narrative with full-width visuals.
+- Release assets and source archive prepared for GitHub publication.
+
+## [0.5.6] - 2026-08-03
+
+### Added
+
+- MIT License.
+- Local security checks and GitHub Actions for Windows builds.
+- GitHub documentation, issue templates, and a release checklist.
+- UI quality assurance at the 760x560 minimum window size.
+
+### Changed
+
+- Electron renderer moved into the sandbox.
+- New windows, renderer navigation, and permissions are denied by default.
+- Image imports, backups, settings, tags, and IPC parameters are validated.
+- Unused legacy assets are excluded from packaged builds.
 
 ### Security
 
-- максимальный размер одного изображения — 200 МБ;
-- SVG и файлы с поддельным MIME больше не импортируются;
-- добавлены лимиты распаковки backup и импорта настроек.
+- Maximum image size set to 200 MB.
+- SVG and files with mismatched MIME signatures are rejected.
+- Backup extraction and settings import limits added.
 
-## [0.5.5] — 2026-08-02
+## [0.5.5] - 2026-08-02
 
-- двухсекундный animated splash;
-- единая верхняя панель и theme-aware system icons;
-- исправлено позиционирование контекстного меню;
-- добавлены режимы захвата области и окна.
+- Added a two-second animated splash screen.
+- Unified the title bar and added theme-aware system icons.
+- Fixed context menu positioning.
+- Added selected-area and window capture modes.
+

@@ -1,15 +1,16 @@
-# Security Policy
+# Security policy
 
 ## Supported versions
 
-Исправления безопасности выпускаются для последней версии Visual Vault.
+Security fixes are released for the latest version of Visual Vault.
 
 ## Reporting a vulnerability
 
-Не публикуйте уязвимость в обычном Issue. Используйте **Security → Advisories → Report a vulnerability** в GitHub-репозитории. Укажите версию, Windows build, шаги воспроизведения и ожидаемый ущерб.
+Do not publish vulnerabilities in regular issues. Use **Security > Advisories > Report a vulnerability** in the GitHub repository. Include the affected version, Windows build, reproduction steps, and expected impact.
 
 ## Security model
 
-Visual Vault — local-first приложение без сетевого API. Renderer изолирован через Electron sandbox/context isolation; доступ к файловой системе идёт через ограниченный IPC bridge. Библиотека по умолчанию хранится в `%USERPROFILE%\Pictures\Visual Vault`.
+Visual Vault is a local-first application without a network API. The renderer is isolated through Electron sandboxing and context isolation. File-system access is limited to the IPC bridge. The default library is stored in `%USERPROFILE%\Pictures\Visual Vault`.
 
-Windows EXE 0.5.6 пока не подписан. Проверяйте SHA-256 из GitHub Release и скачивайте файл только из официального репозитория.
+Visual Vault 0.5.7 binaries are not code-signed. Verify SHA-256 checksums from the GitHub Release and download binaries only from the official repository.
+

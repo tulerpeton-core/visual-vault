@@ -1,12 +1,12 @@
 # Contributing
 
-## Перед изменением
+## Before making changes
 
-1. Создайте Issue с проблемой или предложением.
-2. Не добавляйте телеметрию, облачные зависимости или сетевые запросы без отдельного решения владельца.
-3. Не коммитьте пользовательские изображения, базы, backups и release-бинарники.
+1. Open an issue describing the problem or proposal.
+2. Do not add telemetry, cloud dependencies, or network requests without an explicit project decision.
+3. Do not commit user images, databases, backups, or release binaries.
 
-## Проверка
+## Validation
 
 ```powershell
 npm ci
@@ -15,8 +15,9 @@ npm audit --omit=dev
 npm run dist:portable
 ```
 
-Для UI-изменений проверьте light/dark, русский/английский, 760×560 и 1200×820, клавиатурный фокус, reduced motion и Windows scale 125%/150%.
+For UI changes, verify light and dark themes, English and Russian interface modes, 760x560 and 1200x820 windows, keyboard focus, reduced motion, and Windows scaling at 125% and 150%.
 
-## Pull request
+## Pull requests
 
-Опишите цель, тесты, визуальные изменения и миграцию данных. Один PR — одна связная задача.
+Describe the goal, validation performed, visual changes, and any data migration. Keep each pull request focused on one coherent task.
+

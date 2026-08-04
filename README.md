@@ -1,56 +1,76 @@
 # Visual Vault
 
-Локальный каталог для скриншотов и визуальных референсов. Изображения, теги и база данных хранятся на компьютере; сетевых запросов приложение не выполняет.
+A private, local-first visual library for screenshots and image references.
 
 ![Visual Vault product preview](docs/screenshots/visual-vault-github-cover.png)
 
-> Статус: production. Текущая версия — 0.5.7. Windows EXE распространяются без цифровой подписи.
+[Download the latest release](https://github.com/tulerpeton-core/visual-vault/releases/latest) | [View the changelog](CHANGELOG.md) | [Build from source](#build-from-source)
 
-## Возможности
+Visual Vault keeps screenshots, design references, and copied images in one searchable library. Your images, tags, and SQLite database stay on your computer.
 
-- импорт PNG, JPEG, WebP, GIF, BMP и AVIF;
-- захват экрана, окна, выбранной области и буфера обмена;
-- теги, избранное, корзина, поиск, фильтры и сортировка;
-- закреплённые поверх окон референсы;
-- светлая/тёмная тема, русский/английский интерфейс;
-- глобальная горячая клавиша и режим в трее;
-- резервные копии, экспорт настроек и проверка SQLite-базы;
-- installer и portable EXE.
+## Keep every reference in one place
 
-## Обзор интерфейса
+![Visual Vault dark library with tagged sample images](docs/screenshots/github-visuals-v3/generated/02-library-dark.png)
 
-| Библиотека | Захват |
-| --- | --- |
-| ![Dark library](docs/screenshots/github-visuals-v3/generated/02-library-dark.png) | ![Capture modes](docs/screenshots/github-visuals-v3/generated/03-capture.png) |
+Start with a polished sample library, then replace it with your own material. Search, filter, sort, tag, favorite, rename, pin, or move images to trash without leaving the app.
 
-| Светлая и тёмная темы | Рабочий процесс |
-| --- | --- |
-| ![Light and dark themes](docs/screenshots/github-visuals-v3/generated/04-light-dark.png) | ![Capture, save, tag and pin workflow](docs/screenshots/github-visuals-v3/generated/05-workflow.png) |
+## Capture exactly what you need
 
-### Локальное хранение
+![Selected area, window, full screen, and clipboard capture modes](docs/screenshots/github-visuals-v3/generated/03-capture.png)
 
-![Local-first storage](docs/screenshots/github-visuals-v3/generated/06-local-first.png)
+Capture a selected area, an open window, the full screen, or an image from the clipboard. The default global shortcut is `Ctrl+Shift+V`.
 
-## Системные требования
+## Work in light or dark mode
 
-- Windows 10/11 x64;
-- около 250 МБ для приложения плюс место под библиотеку;
-- для сборки: Node.js 22+ и npm.
+![Visual Vault light and dark themes](docs/screenshots/github-visuals-v3/generated/04-light-dark.png)
 
-## Данные и приватность
+Both themes use the same layout and controls. System, tray, and taskbar icons adapt to the active theme.
 
-По умолчанию библиотека находится в `%USERPROFILE%\Pictures\Visual Vault`:
+## Move from capture to reference
+
+![Capture, save, tag, and pin workflow](docs/screenshots/github-visuals-v3/generated/05-workflow.png)
+
+Capture an image, save it to the library, organize it with tags, and pin it above other windows when you need a persistent reference.
+
+## Local by design
+
+![Local storage architecture with no account, telemetry, or cloud requirement](docs/screenshots/github-visuals-v3/generated/06-local-first.png)
+
+Images, tags, settings, and the SQLite database remain on your PC. Visual Vault requires no account, sends no telemetry, and does not depend on cloud storage.
+
+## Features
+
+- Import PNG, JPEG, WebP, GIF, BMP, and AVIF files.
+- Capture a selected area, window, full screen, or clipboard image.
+- Search, filters, sorting, tags, favorites, trash, and batch actions.
+- Pin reference images above other windows.
+- Light and dark themes with English and Russian interface languages.
+- Global capture shortcut and system tray mode.
+- Backups, settings export, and SQLite integrity checks.
+- Installer and portable distributions.
+
+## Download
+
+Download the installer or portable build from [GitHub Releases](https://github.com/tulerpeton-core/visual-vault/releases/latest).
+
+Current prebuilt binaries support Windows 10/11 x64. The binaries are not code-signed, so Windows SmartScreen may display a warning. Verify downloads with the published `SHA256SUMS.txt` file.
+
+## Data and privacy
+
+The default library location is `%USERPROFILE%\Pictures\Visual Vault`:
 
 ```text
 Visual Vault/
-├─ vault.db
-├─ originals/
-└─ backups/
+|-- vault.db
+|-- originals/
+`-- backups/
 ```
 
-Portable означает запуск без установки. Данные намеренно остаются в стандартной папке Pictures, поэтому обновление EXE не скрывает существующую библиотеку. Телеметрии, аккаунта и облачной синхронизации нет.
+Portable mode runs without installation but intentionally uses the same Pictures library. Updating or moving the executable does not hide an existing collection.
 
-## Разработка
+## Build from source
+
+Requirements: Node.js 22 or newer and npm.
 
 ```powershell
 npm ci
@@ -58,23 +78,25 @@ npm run check
 npm start
 ```
 
-Сборки:
+Build Windows distributions:
 
 ```powershell
 npm run dist:portable
 npm run dist
 ```
 
-Результаты: `release-portable/Visual-Vault-Portable-0.5.7.exe` и `release-v3-final/Visual-Vault-Setup-0.5.7.exe`.
+Outputs:
 
-## Релиз
+- `release-portable/Visual-Vault-Portable-0.5.7.exe`
+- `release-v3-final/Visual-Vault-Setup-0.5.7.exe`
 
-Полный процесс: [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md). Технический и UI/UX-аудит: [docs/AUDIT_2026-08-03.md](docs/AUDIT_2026-08-03.md).
+## Project documentation
 
-## Безопасность
+- [Release checklist](docs/RELEASE_CHECKLIST.md)
+- [Technical and UI/UX audit](docs/AUDIT_2026-08-03.md)
+- [Security policy](SECURITY.md)
+- [Contribution guide](CONTRIBUTING.md)
 
-Уязвимости сообщайте приватно через GitHub Security Advisories. Подробности: [SECURITY.md](SECURITY.md).
+## License
 
-## Лицензия
-
-[MIT](LICENSE) — разрешено использовать, изменять и распространять код с сохранением copyright notice и текста лицензии.
+Visual Vault is available under the [MIT License](LICENSE).
