@@ -24,7 +24,7 @@
     "dist:portable": "npm run check && electron-builder --config electron-builder.portable.cjs"
   },
   "devDependencies": {
-    "electron": "43.1.0",
+    "electron": "43.2.0",
     "electron-builder": "26.15.3",
     "esbuild": "0.25.12"
   },
