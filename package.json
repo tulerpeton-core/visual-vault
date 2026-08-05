@@ -31,7 +31,6 @@
   "build": {
     "appId": "com.visualvault.desktop.v5",
     "productName": "Visual Vault",
-    "electronDist": "node_modules/electron/dist",
     "asar": true,
     "compression": "maximum",
     "directories": {
