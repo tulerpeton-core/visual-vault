@@ -1,0 +1,71 @@
+name: Windows build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 35
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run check
+      - run: npm audit --audit-level=high
+      - run: npx electron-builder --config electron-builder.portable.cjs
+      - run: npx electron-builder --win nsis
+
+      - name: Create SHA-256 manifest
+        shell: pwsh
+        run: |
+          $files = @(
+            Get-ChildItem release-portable -Filter *.exe
+            Get-ChildItem release-v3-final -Filter *.exe
+          )
+          $lines = foreach ($file in $files) {
+            $hash = Get-FileHash $file.FullName -Algorithm SHA256
+            "$($hash.Hash)  $($file.Name)"
+          }
+          $lines | Set-Content SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: visual-vault-windows-${{ github.sha }}
+          path: |
+            release-portable/*.exe
+            release-v3-final/*.exe
+            SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish tagged release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" `
+            release-portable/*.exe `
+            release-v3-final/*.exe `
+            SHA256SUMS.txt `
+            --repo "${{ github.repository }}" `
+            --title "Visual Vault ${{ github.ref_name }}" `
+            --generate-notes
+
+    permissions:
+      contents: write
