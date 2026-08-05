@@ -27,8 +27,8 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm audit --audit-level=high
-      - run: npx electron-builder --config electron-builder.portable.cjs
-      - run: npx electron-builder --win nsis
+      - run: npx electron-builder --config electron-builder.portable.cjs --publish never
+      - run: npx electron-builder --win nsis --publish never
 
       - name: Create SHA-256 manifest
         shell: pwsh
